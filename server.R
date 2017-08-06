@@ -6,10 +6,7 @@ library(ggplot2)
 shinyServer(function(input, output) {
   output$outPlot <- renderPlot({
     df <- data.frame(x=seq(from=-2,to=2,by=0.01))
-    if(input$inputSlider==0)
-      df$y <- 0
-    else
-      df$y <- df$x^input$inputSlider
+    df$y <- df$x^input$inputSlider
     p <- ggplot(data=df, aes(x=x, y=y))
     p <- p + geom_hline(yintercept=0) # x coordinate
     p <- p + geom_vline(xintercept=0) # y coordinate
